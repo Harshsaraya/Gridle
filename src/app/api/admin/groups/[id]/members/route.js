@@ -5,9 +5,11 @@ import Group from "@/models/Group";
 import User from "@/models/User";
 import { auth } from "@/auth";
 
+export const dynamic = "force-dynamic"; // ⬅️ prevent build errors on Vercel
+
 export async function POST(request, context) {
   try {
-    const { params } = context; // ✅ get params from context
+    const { params } = context;
 
     const session = await auth();
     if (!session || session.user.role !== "admin") {
@@ -15,10 +17,8 @@ export async function POST(request, context) {
     }
 
     const { userId } = await request.json();
-
     await connectDB();
 
-    // Check if user exists
     const user = await User.findById(userId);
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
@@ -29,7 +29,6 @@ export async function POST(request, context) {
       return NextResponse.json({ message: "Group not found" }, { status: 404 });
     }
 
-    // Check if user is already a member
     if (group.members.some((member) => member.user.toString() === userId)) {
       return NextResponse.json(
         { message: "User is already a member" },
@@ -37,7 +36,6 @@ export async function POST(request, context) {
       );
     }
 
-    // Add user to group
     group.members.push({
       user: userId,
       role: "member",
@@ -45,8 +43,6 @@ export async function POST(request, context) {
     });
 
     await group.save();
-
-    // Populate the response with user details
     await group.populate("members.user", "name email");
 
     return NextResponse.json({
