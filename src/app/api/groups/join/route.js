@@ -1,5 +1,3 @@
-export const runtime = "node";
-
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Group from "@/models/Group";
