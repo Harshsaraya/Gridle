@@ -1,4 +1,4 @@
-export const runtime = 'node'; // Add this line
+export const runtime = 'nodejs'; // Corrected from 'node' to 'nodejs'
 
 // app/api/admin/groups/[id]/members/[userId]/route.js
 import { NextResponse } from 'next/server';
