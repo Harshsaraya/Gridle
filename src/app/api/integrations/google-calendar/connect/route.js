@@ -1,4 +1,5 @@
 // app/api/integrations/google-calendar/connect/route.js
+export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server';
 import { auth } from '@/auth';
 

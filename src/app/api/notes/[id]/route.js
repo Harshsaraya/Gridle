@@ -1,10 +1,12 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import Note from '@/models/Note';
 import { auth } from '@/auth';
 import mongoose from "mongoose";
 
-export async function GET(request, { params }) {
+export async function GET(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session) {
@@ -37,7 +39,8 @@ export async function GET(request, { params }) {
   }
 }
 
-export async function PUT(request, { params }) {
+export async function PUT(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session) {

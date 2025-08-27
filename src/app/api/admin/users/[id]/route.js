@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 // PUT, DELETE, POST reset-password
 import { NextResponse } from 'next/server';
 import { connectDB, saveTokenToDatabase } from '@/lib/mongodb';
@@ -7,7 +8,8 @@ import crypto from 'crypto';
 import { sendResetEmail } from '@/lib/email';
 
 // Update user
-export async function PUT(request, { params }) {
+export async function PUT(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session || session.user.role !== 'admin') {
@@ -28,7 +30,8 @@ export async function PUT(request, { params }) {
 }
 
 // Delete user
-export async function DELETE(request, { params }) {
+export async function DELETE(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session || session.user.role !== 'admin') {

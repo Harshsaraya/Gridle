@@ -1,9 +1,11 @@
+export const dynamic = "force-dynamic";
 import { connectDB } from '@/lib/mongodb';
 import Task from '@/models/Task';
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 
-export async function GET(request, { params }) {
+export async function GET(request, context) {
+  const { params } = context;
   try {
     await connectDB();
     const { id } = params;
@@ -24,7 +26,8 @@ export async function GET(request, { params }) {
   }
 }
 
-export async function PUT(request, { params }) {
+export async function PUT(request, context) {
+  const { params } = context;
   try {
     await connectDB();
     const { id } = params;

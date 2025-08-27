@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Group from "@/models/Group";
@@ -5,7 +6,8 @@ import { auth } from "@/auth";
 import mongoose from "mongoose";
 
 // Get group by ID
-export async function GET(request, { params }) {
+export async function GET(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session) {

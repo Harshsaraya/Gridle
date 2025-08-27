@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 // src/app/api/tasks/[id]/route.js
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
@@ -9,13 +10,13 @@ import mongoose from "mongoose";
 // GET Task by ID
 // ---------------------------
 export async function GET(request, context) {
+  const { id } = context.params;
   try {
     const session = await auth();
     if (!session?.user) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = await context.params; // ✅ must await
     if (!mongoose.isValidObjectId(id)) {
       return NextResponse.json({ message: "Invalid ID" }, { status: 400 });
     }

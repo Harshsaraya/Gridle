@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import bcrypt from "bcryptjs";
 import { sendResetEmail } from "@/lib/email";
 import { generateToken } from "@/lib/utils";

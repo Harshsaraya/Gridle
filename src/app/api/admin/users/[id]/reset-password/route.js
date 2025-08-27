@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import { auth } from '@/auth';
@@ -5,7 +6,8 @@ import User from '@/models/User';
 import crypto from 'crypto';
 import { sendResetEmail } from '@/lib/email'; // your existing email helper
 
-export async function POST(request, { params }) {
+export async function POST(request, context) {
+  const { params } = context;
   try {
     const session = await auth();
     if (!session || session.user.role !== 'admin') {
