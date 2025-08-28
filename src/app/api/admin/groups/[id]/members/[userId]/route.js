@@ -1,5 +1,3 @@
-export const runtime = 'nodejs';
-
 // app/api/admin/groups/[id]/members/[userId]/route.js
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
