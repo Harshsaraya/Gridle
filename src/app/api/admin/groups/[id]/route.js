@@ -1,4 +1,3 @@
-// app/api/admin/groups/[id]/route.js
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Group from "@/models/Group";
@@ -6,7 +5,7 @@ import Task from "@/models/Task";
 import Note from "@/models/Note";
 import { auth } from "@/auth";
 
-export const dynamic = "force-dynamic"; // ⬅️ stops build-time errors
+export const dynamic = "force-dynamic"; // ⬅️ prevents build-time pre-render
 
 export async function PUT(request, context) {
   try {
