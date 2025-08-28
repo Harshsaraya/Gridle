@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gridle
+
+Gridle is a full-stack productivity and collaboration platform built with Next.js, MongoDB, and Tailwind CSS. It provides a unified dashboard for managing users, groups, tasks, notes, analytics, and more, with robust authentication and admin controls.
+
+## Features
+
+- **Authentication:** Secure login, registration, password reset, and Google OAuth via NextAuth.
+- **User Management:** Admins can view, edit, and manage users.
+- **Groups:** Create, search, and manage groups; assign users and tasks.
+- **Tasks:** CRUD operations for tasks, with status, priority, due dates, and assignment to users/groups.
+- **Notes:** Personal and group notes, linked to tasks.
+- **Analytics Dashboard:** Visualize user activity, group creation, task completion rates, and trends.
+- **Admin Panel:** Role-based access for advanced management of users, groups, tasks, and notes.
+- **Email Integration:** Password reset and notifications via SMTP.
+- **Responsive UI:** Built with Tailwind CSS and custom React components.
+
+## Tech Stack
+
+- **Frontend:** Next.js (App Router), React, Tailwind CSS
+- **Backend:** Next.js API routes, MongoDB (Mongoose)
+- **Authentication:** NextAuth.js
+- **Email:** Nodemailer
+- **Deployment:** Vercel
+
+## Project Structure
+
+```
+src/
+  app/
+    admin/           # Admin dashboard and management pages
+    api/             # API routes for users, groups, tasks, notes, auth, etc.
+    components/      # Reusable UI components
+    lib/             # Utility libraries (db, email, etc.)
+    models/          # Mongoose models
+    ...              # Other feature pages (dashboard, notes, tasks, etc.)
+public/              # Static assets
+```
+
+## Environment Variables
+
+Create a `.env.local` file with:
+
+```
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+MONGODB_URI=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+EMAIL_SERVER_HOST=
+EMAIL_SERVER_PORT=
+EMAIL_SERVER_USER=
+EMAIL_SERVER_PASSWORD=
+EMAIL_FROM=
+```
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```
+   npm install
+   ```
+2. **Set up environment variables:**  
+   Copy `.env.example` to `.env.local` and fill in your credentials.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+3. **Run the development server:**
+   ```
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deploy easily to [Vercel](https://vercel.com/) with your environment variables.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Pull requests and issues are welcome! Please follow the code style and add tests where possible.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
